@@ -1,0 +1,8 @@
+--------------------  Example_2833xScia_FFDLB.pjt - Debug  --------------------
+[Example_2833xScia_FFDLB.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"./Debug" -fs"./Debug" -i"../../DSP2833x_headers/include" -i"../../DSP2833x_common/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"Debug.lkf" "Example_2833xScia_FFDLB.c"
+
+[Linking...] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -@"Debug.lkf"
+<Linking>
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

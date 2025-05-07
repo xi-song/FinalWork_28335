@@ -1,0 +1,46 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="DSP2833x"
+ProjectDir="J:\F28335_III_SourceCode_V3.3\SourceCode16_SciC232_9600_OK\"
+ProjectType=Executable
+CPUFamily=TMS320C28XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="DSP2833x_ADC_cal.asm"
+Source="DSP2833x_CodeStartBranch.asm"
+Source="DSP2833x_DefaultIsr.c"
+Source="DSP2833x_GlobalVariableDefs.c"
+Source="DSP2833x_PieCtrl.c"
+Source="DSP2833x_PieVect.c"
+Source="DSP2833x_Sci.c"
+Source="DSP2833x_SysCtrl.c"
+Source="DSP2833x_usDelay.asm"
+Source="Example_2833xScia_FFDLB.c"
+Source="28335_RAM_lnk.cmd"
+Source="DSP2833x_Headers_nonBIOS.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -pdr -as -fr".\Debug" -fs".\Debug" -i"..\..\DSP2833x_headers\include" -i"..\..\DSP2833x_common\include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32
+
+["Compiler" Settings: "Release"]
+Options=-q -o3 -fr"J:\F28335_III_SourceCode_V3.3\SourceCode16_SciC232_9600_OK\Release" -d"LARGE_MODEL" -ml -v28
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v28
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v28
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m".\Debug\Example_2833xScia_FFDLB.map" -o".\Debug\Example_2833xScia_FFDLB.out" -stack0X200 -w -x -i"..\..\DSP2833x_headers\include" -l"rts2800_fpu32.lib"
+
+["Linker" Settings: "Release"]
+Options=-q -c -o".\Release\Example_2833xSci_FFDLB.out" -x
+
