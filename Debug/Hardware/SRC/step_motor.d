@@ -27,6 +27,7 @@ Hardware/SRC/step_motor.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_ePw
 Hardware/SRC/step_motor.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_Dma_defines.h
 Hardware/SRC/step_motor.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_I2C_defines.h
 Hardware/SRC/step_motor.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_DefaultISR.h
+Hardware/SRC/step_motor.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/key.h
 
 ../Hardware/SRC/step_motor.c:
 
@@ -81,4 +82,6 @@ D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_Dma_defines.h:
 D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_I2C_defines.h:
 
 D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_DefaultISR.h:
+
+D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/key.h:
 

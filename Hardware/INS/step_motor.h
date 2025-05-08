@@ -8,7 +8,7 @@ extern int flag_key;
 void InitMotorGPIO(void);
 void InitLEDGPIO(void);
 void InitXINT1(void);
-void StepMotorForward(void);
+void StepMotorForward(int flag);
 void StepMotorBackward(void);
 void InitMotor(void);
 //void forward(int flag);

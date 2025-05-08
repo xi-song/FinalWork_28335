@@ -7,8 +7,8 @@
 //const Uint16 ward[] = {0x0A, 0x03, 0x05, 0x0C, 0x05,0x03,0x0A,0x0C}; // 反转序列
 
 
-const Uint16 Forward[] = {0x0A, 0x03, 0x05, 0x0C}; // 正转序列
-const Uint16 Backward[] = {0x05,0x03,0x0A,0x0C}; // 反转序列
+Uint16 Forward[] = {0x0A, 0x03, 0x05, 0x0C}; // 正转序列
+Uint16 Backward[] = {0x05,0x03,0x0A,0x0C}; // 反转序列
 
 
 // 全局变量
@@ -43,18 +43,19 @@ void InitXINT1(void)
     EDIS;
 }
 
-static Uint32 CurrentPhase =0;
+static Uint32 CurrentPhase =-1;
 
 
 
 // 正转一步
-void StepMotorForward(void)
+void StepMotorForward(int flag)
 {
 
     GpioDataRegs.GPADAT.all = (Forward[CurrentPhase] << MOTOR_PIN_START);
     CurrentPhase = (CurrentPhase + 1) % 4;
-    if(CurrentPhase==3) CurrentPhase=4;
-  //  DELAY_US(40000);  // 步间延时20ms
+   // if(CurrentPhase==3) CurrentPhase=4;
+
+    if(flag)DELAY_US(2000);  // 步间延时20ms
 }
 
 
@@ -65,7 +66,7 @@ void StepMotorBackward(void)
     CurrentPhase = (CurrentPhase + 1) % 4;
     GpioDataRegs.GPADAT.all = (Backward[CurrentPhase] << MOTOR_PIN_START);
 
- //   DELAY_US(40000);  // 步间延时20ms
+    DELAY_US(20000);  // 步间延时20ms
 }
 
 void InitMotor(void){
@@ -74,16 +75,29 @@ void InitMotor(void){
 
 }
 
+
 void StepMotor(void){
-    int isturn=0;
-    keynum=key_GetNum();
+    int presscount=0;
+    int keynum=key_GetNum();s
+    int longnum=key_GetLongNum();
+    static Uint16 *p1=Forward,*p2=Backward;
+    int i=-1,isturn=1;
+    Uint16 value=0;
+    if(keynum){
+         presscount=0;
+         i=(i+1)%4;
+         GpioDataRegs.GPADAT.all = (p1[i] << MOTOR_PIN_START);
 
-    //反转的话 用键盘矩阵？
-      if(keynum==1){//短按
+     }
 
-      }
-      if(flag_key){//长按持续旋转
+     while(keynum){
+         presscount=1;
+         i=(i+1)%4;
+         GpioDataRegs.GPADAT.all = (p1[i] << MOTOR_PIN_START);
+         DELAY_US(20000);
+         longnum=key_GetLongNum();
+     }
 
-      }
+
 
 }

@@ -25,25 +25,25 @@ User/Example_2833xScia_FFDLB.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardwar
 User/Example_2833xScia_FFDLB.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/key.h
 User/Example_2833xScia_FFDLB.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/timer.h
 User/Example_2833xScia_FFDLB.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/keyboard.h
-User/Example_2833xScia_FFDLB.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/step_motor.h
 User/Example_2833xScia_FFDLB.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/DSP2833x_Examples.h
 User/Example_2833xScia_FFDLB.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_GlobalPrototypes.h
 User/Example_2833xScia_FFDLB.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_ePwm_defines.h
 User/Example_2833xScia_FFDLB.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_Dma_defines.h
 User/Example_2833xScia_FFDLB.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_I2C_defines.h
 User/Example_2833xScia_FFDLB.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_DefaultISR.h
-User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdint.h
+User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdio.h
 User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/_ti_config.h
 User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/linkage.h
+User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdarg.h
+User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_types.h
+User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/cdefs.h
+User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/machine/_types.h
+User/Example_2833xScia_FFDLB.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/step_motor.h
+User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdint.h
 User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/_stdint40.h
 User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/stdint.h
-User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/cdefs.h
-User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_types.h
-User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/machine/_types.h
 User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/machine/_stdint.h
 User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_stdint.h
-User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdio.h
-User/Example_2833xScia_FFDLB.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdarg.h
 
 ../User/Example_2833xScia_FFDLB.c:
 
@@ -95,8 +95,6 @@ D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/timer.h:
 
 D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/keyboard.h:
 
-D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/step_motor.h:
-
 D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/DSP2833x_Examples.h:
 
 D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_GlobalPrototypes.h:
@@ -109,27 +107,29 @@ D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_I2C_defines.h:
 
 D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_DefaultISR.h:
 
-D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdint.h:
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdio.h:
 
 D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/_ti_config.h:
 
 D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/linkage.h:
 
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdarg.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_types.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/cdefs.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/machine/_types.h:
+
+D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/step_motor.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdint.h:
+
 D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/_stdint40.h:
 
 D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/stdint.h:
 
-D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/cdefs.h:
-
-D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_types.h:
-
-D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/machine/_types.h:
-
 D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/machine/_stdint.h:
 
 D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_stdint.h:
-
-D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdio.h:
-
-D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdarg.h:
 

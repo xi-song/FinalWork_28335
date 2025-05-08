@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 //长按的话 切换  短按顺序执行
-extern int flag_key;
+
 // Global
 extern volatile Uint32 ButtonPressCount; // 按键计数（0-7）
 extern Uint16 ErrorCount;
@@ -34,6 +34,7 @@ void main(void)
    key_init();
    InitSciGpio();
    InitMotor();
+   keyboard_init();
    InitLEDGPIO();
 
     DINT;
@@ -62,49 +63,60 @@ void main(void)
 //           flag=0;
 //       }
 
-    int keynum=0;
+    int keynum=0,longnum=0;
+    int a=0;
     int presscount=0;
     int i=0;
 	for(;;){
 
-    //定时器按键扫描
-	    for( i=0;i<20000;i++){
-            GpioDataRegs.GPADAT.all = 0xa<<7;
-            GpioDataRegs.GPADAT.all = 0x3<<7;
-            GpioDataRegs.GPADAT.all = 0x5<<7;
-            GpioDataRegs.GPADAT.all = 0xc<<7;
-	    }
+//    //定时器按键扫描
+//	    for( i=0;i<20000;i++){
+//            GpioDataRegs.GPADAT.all = 0xa<<7;
+//            GpioDataRegs.GPADAT.all = 0x3<<7;
+//            GpioDataRegs.GPADAT.all = 0x5<<7;
+//            GpioDataRegs.GPADAT.all = 0xc<<7;
+//	    }
+//
+//	    for(i=0;i<20000;i++){
+//            GpioDataRegs.GPADAT.all = 0x5<<7;
+//            GpioDataRegs.GPADAT.all = 0x3<<7;
+//            GpioDataRegs.GPADAT.all = 0xa<<7;
+//            GpioDataRegs.GPADAT.all = 0xc<<7;
+//	    }
 
-	    for(i=0;i<20000;i++){
-            GpioDataRegs.GPADAT.all = 0x5<<7;
-            GpioDataRegs.GPADAT.all = 0x3<<7;
-            GpioDataRegs.GPADAT.all = 0xa<<7;
-            GpioDataRegs.GPADAT.all = 0xc<<7;
-	    }
+//
+//	    int keynum=key_GetNum();
+//	    int longnum=key_GetLongNum();
+//
+//	           if(keynum){
+//	               presscount=0;
+//	               StepMotorForward(presscount);
+//
+//	           }
+//	           a=4;
+//	           while(longnum){
+//	               presscount=1;
+//	               StepMotorForward(presscount);
+//	               longnum=key_GetLongNum();
+//	           }
+
+	    StepMotor();
+
+
+	}
 
 
 
-
-
-       keynum=key_GetNum();
-       if(keynum==1){//短按
-
-       }
-       if(flag_key)//长按
-
-    }
 
 }
 
-extern const   Uint16  LedCode1[9];
+
+
 interrupt void cpu_timer0_isr(void)
 {
    CpuTimer0.InterruptCount++;
-  // GpioDataRegs.GPBTOGGLE.bit.GPIO55 = 1; // Toggle GPIO55 once per 500 milliseconds
    Key_Tick();
 
-
-   // Acknowledge this interrupt to receive more interrupts from group 1
    PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
 }
 

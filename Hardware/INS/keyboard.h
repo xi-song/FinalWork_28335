@@ -2,7 +2,8 @@
 #define __KEYBOARD_H
 #include "DSP2833x_Device.h"
 #include "DSP2833x_Xintf.h"
-
+#include "DSP2833x_Examples.h"
+#include <stdio.h>
 
 
 #define LEDSAB    GpioDataRegs.GPADAT.bit.GPIO24
@@ -13,8 +14,7 @@
 
 
 
-
-
+void keyboard_init(void);
 void WriteLED(unsigned int index);
 void control_motor(unsigned int state);
 void configtestled(void);

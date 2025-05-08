@@ -1,4 +1,6 @@
 #include "keyboard.h"
+
+//存储数码管显示字符的段码，共20个元素，对应0-9、A-F及特殊符号
 unsigned char LedCode[] = {0xFC,0x60,0xDA,0xF2,0x66,0xB6,0xBE,0xE0,0xFE,0xF6,0xEE,0x3E,0x9C,0x7A,0x9E,0x8E, 0x01, 0x02, 0x04, 0x08 };
 unsigned int LedResult[8];
 unsigned int count;
@@ -12,6 +14,8 @@ unsigned int motor_state = 0; // 0:停止, 1:转动
 //0x001 8; 0x101 9;  0x201 A;  0x301 B;  0x401  LAST
 //0x002 4; 0x102 5;  0x202 6;  0x302 7;  0x402  MON
 //0x003 0; 0x103 1;  0x203 2;  0x303 3;  0x403 RST
+//行引脚：连接到矩阵的行，通常设置为输出模式。
+//列引脚：连接到矩阵的列，通常设置为输入模式，并启用上拉电阻。
 
 
 void configtestled(void)
@@ -89,6 +93,13 @@ void configtestled(void)
     EDIS;
 }
 
+void keyboard_init(void){
+    configtestled();
+}
+
+//向数码管写入指定索引的段码
+//通过LEDSAB和LEDSCLK模拟串行数据传输（类似SPI）
+//循环8次，将LedCode[index]的每一位依次输出到数据线，并通过时钟线触发移位。
 void WriteLED(unsigned int index)
 {
     unsigned int i, j;
@@ -103,6 +114,7 @@ void WriteLED(unsigned int index)
                 LEDSAB = 0;
 
             LEDSCLK = 0;
+
             LEDSCLK = 1;
         }
     }
