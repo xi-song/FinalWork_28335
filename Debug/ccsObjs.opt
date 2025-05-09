@@ -7,6 +7,7 @@
 "./DSP2833x_Sci.obj"
 "./DSP2833x_SysCtrl.obj"
 "./DSP2833x_usDelay.obj"
+"./Hardware/SRC/DCmotor.obj"
 "./Hardware/SRC/DSP2833x_CpuTimers.obj"
 "./Hardware/SRC/key.obj"
 "./Hardware/SRC/keyboard.obj"

@@ -28,6 +28,13 @@ Hardware/SRC/step_motor.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_Dma
 Hardware/SRC/step_motor.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_I2C_defines.h
 Hardware/SRC/step_motor.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_DefaultISR.h
 Hardware/SRC/step_motor.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/key.h
+Hardware/SRC/step_motor.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdio.h
+Hardware/SRC/step_motor.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/_ti_config.h
+Hardware/SRC/step_motor.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/linkage.h
+Hardware/SRC/step_motor.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdarg.h
+Hardware/SRC/step_motor.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_types.h
+Hardware/SRC/step_motor.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/cdefs.h
+Hardware/SRC/step_motor.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/machine/_types.h
 
 ../Hardware/SRC/step_motor.c:
 
@@ -84,4 +91,18 @@ D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_I2C_defines.h:
 D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_DefaultISR.h:
 
 D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/key.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdio.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/_ti_config.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/linkage.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdarg.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_types.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/cdefs.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/machine/_types.h:
 

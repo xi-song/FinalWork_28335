@@ -6,6 +6,7 @@ SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Hardware/SRC/DCmotor.c \
 ../Hardware/SRC/DSP2833x_CpuTimers.c \
 ../Hardware/SRC/key.c \
 ../Hardware/SRC/keyboard.c \
@@ -15,6 +16,7 @@ C_SRCS += \
 ../Hardware/SRC/timer.c 
 
 C_DEPS += \
+./Hardware/SRC/DCmotor.d \
 ./Hardware/SRC/DSP2833x_CpuTimers.d \
 ./Hardware/SRC/key.d \
 ./Hardware/SRC/keyboard.d \
@@ -24,6 +26,7 @@ C_DEPS += \
 ./Hardware/SRC/timer.d 
 
 OBJS += \
+./Hardware/SRC/DCmotor.obj \
 ./Hardware/SRC/DSP2833x_CpuTimers.obj \
 ./Hardware/SRC/key.obj \
 ./Hardware/SRC/keyboard.obj \
@@ -33,6 +36,7 @@ OBJS += \
 ./Hardware/SRC/timer.obj 
 
 OBJS__QUOTED += \
+"Hardware\SRC\DCmotor.obj" \
 "Hardware\SRC\DSP2833x_CpuTimers.obj" \
 "Hardware\SRC\key.obj" \
 "Hardware\SRC\keyboard.obj" \
@@ -42,6 +46,7 @@ OBJS__QUOTED += \
 "Hardware\SRC\timer.obj" 
 
 C_DEPS__QUOTED += \
+"Hardware\SRC\DCmotor.d" \
 "Hardware\SRC\DSP2833x_CpuTimers.d" \
 "Hardware\SRC\key.d" \
 "Hardware\SRC\keyboard.d" \
@@ -51,6 +56,7 @@ C_DEPS__QUOTED += \
 "Hardware\SRC\timer.d" 
 
 C_SRCS__QUOTED += \
+"../Hardware/SRC/DCmotor.c" \
 "../Hardware/SRC/DSP2833x_CpuTimers.c" \
 "../Hardware/SRC/key.c" \
 "../Hardware/SRC/keyboard.c" \

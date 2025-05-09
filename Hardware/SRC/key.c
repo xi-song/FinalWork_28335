@@ -1,11 +1,11 @@
 #include "key.h"
-
 int key_num=0;//按键返回值 确定按键
 int long_press=0;
+int double_press=0,double_cnt=0;
 #define LONG_PRESS_TIME  3 //3*20=60ms
-#define DOUBLE_PRESS_TIME  35
+#define DOUBLE_PRESS_TIME  1200
 
-int double_press=0;
+
 void key_init(void){
 
     EALLOW;
@@ -44,36 +44,55 @@ int key_GetLongNum(void){
     return 0;
 }
 
+Uint16* key_GetDoubleNum(Uint16 dir1[],Uint16 dir2[]){
+    Uint16 *p=NULL;
+    if(double_press){
+        double_cnt++;
+        double_press=0;
+        if(double_cnt%2) p=dir1;
+        else p=dir2;
+        return p;
+    }
+    return NULL;
+}
+
 void Key_Tick(void){
     //t 用于计数双击的时间
-    static int count,longpress_time=0,t=0,pre_t;
+    static int count,t=0;
     static int pre=0,cur=0;
     static int flag=0;
-    static int cnt=0,longflag=0;
-
+    static int short_time=0,cnt=0;
     count++;
+    cnt++;
+
     if(count>=20){
         count=0;
-        if(flag){
+        if(flag){//考虑的是长按后面的弹跳
             pre=0;
             flag=0;
-        }
-        else pre=cur;
+        }else pre=cur;
         cur=Key_GetState();
+
         if(!long_press){
             if(cur==0 && pre!=0){
-                key_num=pre;
+                if((cnt-short_time)<DOUBLE_PRESS_TIME){
+                    double_press=pre;               //连续两次按键
+                    cnt=0;
+                    short_time=0;
+                }else{
+                    key_num=pre;
+                    short_time=cnt;
+                }
                 t=0;
             }
             else if(cur!=0 && pre!=0){
                 t++;
             }else t=0;
-
         }
-        if(t>=50){
+
+        if(t>=55){//是55*20 ms的时间
             long_press=cur;
             flag=1;
-
         }
 
     }

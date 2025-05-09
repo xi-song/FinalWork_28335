@@ -8,6 +8,7 @@
 #include"timer.h"
 #include"keyboard.h"
 #include"step_motor.h"
+#include"DCmotor.h"
 #include <stdint.h>
 #include <stdio.h>
 
@@ -25,34 +26,38 @@ interrupt void ScicRxFifoIsr(void);
 interrupt void ScicTxFifoIsr(void);
 interrupt void XINT1_ISR(void);
 interrupt void cpu_timer0_isr(void);
+interrupt void cpu_timer1_isr(void);
 
-//interrupt void scicTxifoIsr(void);
-void main(void)
-{
 
-   InitSysCtrl();
+void HardwareInit(void){
    key_init();
    InitSciGpio();
    InitMotor();
    keyboard_init();
    InitLEDGPIO();
+   InitCpuTimers();
+}
+//interrupt void scicTxifoIsr(void);
+void main(void)
+{
 
+   InitSysCtrl();
+   InitPieCtrl();
+   HardwareInit();
     DINT;
     IER = 0x0000;
     IFR = 0x0000;
     InitPieVectTable();
 
-    EALLOW;   // This is needed to write to EALLOW protected registers
-    PieVectTable.SCIRXINTC =&ScicRxFifoIsr;         //接收中断函数
+    EALLOW;
+    PieVectTable.SCIRXINTC =&ScicRxFifoIsr; //接收中断函数
     PieVectTable.SCITXINTC =&ScicTxFifoIsr;
     //PieVectTable.XINT1 = &XINT1_ISR;
-    PieVectTable.TINT0 = &cpu_timer0_isr;//定时器中断
-    EDIS;   // This is needed to disable write to EALLOW protected registers
+    PieVectTable.TINT0 = &cpu_timer0_isr;//定时器0中断
+    PieVectTable.XINT13=&cpu_timer1_isr;//
+    EDIS;
 
     EnableInterrupts();
-
-
-    ErrorCount = 0;
 
     scic_fifo_init();
     scic_loopback_init();
@@ -63,53 +68,53 @@ void main(void)
 //           flag=0;
 //       }
 
-    int keynum=0,longnum=0;
-    int a=0;
-    int presscount=0;
+    //要在while里面设置退出键
     int i=0;
+    int keyboard_num=0;
 	for(;;){
-
-//    //定时器按键扫描
-//	    for( i=0;i<20000;i++){
-//            GpioDataRegs.GPADAT.all = 0xa<<7;
-//            GpioDataRegs.GPADAT.all = 0x3<<7;
-//            GpioDataRegs.GPADAT.all = 0x5<<7;
-//            GpioDataRegs.GPADAT.all = 0xc<<7;
-//	    }
-//
-//	    for(i=0;i<20000;i++){
-//            GpioDataRegs.GPADAT.all = 0x5<<7;
-//            GpioDataRegs.GPADAT.all = 0x3<<7;
-//            GpioDataRegs.GPADAT.all = 0xa<<7;
-//            GpioDataRegs.GPADAT.all = 0xc<<7;
-//	    }
-
-//
-//	    int keynum=key_GetNum();
-//	    int longnum=key_GetLongNum();
-//
-//	           if(keynum){
-//	               presscount=0;
-//	               StepMotorForward(presscount);
-//
-//	           }
-//	           a=4;
-//	           while(longnum){
-//	               presscount=1;
-//	               StepMotorForward(presscount);
-//	               longnum=key_GetLongNum();
-//	           }
-
-	    StepMotor();
-
+	    for(i=0;i<=4;i++){
+	        keyboard_scan_lie(i);
+	        DELAY_US(100);
+	        keyboard_num=key_GetKeyBoardNum();
+	        switch(keyboard_num){
+	        case 5:
+	            //key1
+	            WriteLED(0);
+	            break;
+	        case 2:
+	            //key2
+	            WriteLED(1);
+	            break;
+	        case 3:
+	            //key3
+	            WriteLED(2);
+	            break;
+	        case 4:
+	            //key4
+	            WriteLED(3);
+	            break;
+	        default:
+	            break;
+	        }
+	        Setkeybord();
+	    }
 
 	}
 
-
-
-
 }
 
+
+//定时器1中断  用于设置时间
+interrupt void cpu_timer1_isr(void)
+{
+   EALLOW;
+   if(CpuTimer1Regs.TCR.bit.TIF==1){
+       KeyBoard_Tick();
+       CpuTimer1Regs.TCR.bit.TIF==1;
+   }
+   EDIS;
+
+}
 
 
 interrupt void cpu_timer0_isr(void)

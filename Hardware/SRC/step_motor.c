@@ -5,7 +5,7 @@
 //const Uint16 Forward[] = {0x03, 0x05, 0x0C, 0x0A}; // 正转序列
 //const Uint16 Backward[] = {0x0A, 0x0C, 0x05, 0x03}; // 反转序列
 //const Uint16 ward[] = {0x0A, 0x03, 0x05, 0x0C, 0x05,0x03,0x0A,0x0C}; // 反转序列
-
+static int CurrentPhase =-1;
 
 Uint16 Forward[] = {0x0A, 0x03, 0x05, 0x0C}; // 正转序列
 Uint16 Backward[] = {0x05,0x03,0x0A,0x0C}; // 反转序列
@@ -13,7 +13,6 @@ Uint16 Backward[] = {0x05,0x03,0x0A,0x0C}; // 反转序列
 
 // 全局变量
 
-//Uint32 CurrentPhase =1;             // 电机当前相位（0-3）
 
 void InitMotorGPIO(void)
 {
@@ -43,8 +42,16 @@ void InitXINT1(void)
     EDIS;
 }
 
-static Uint32 CurrentPhase =-1;
 
+
+
+void StepForward(Uint16 *dir,int flag){
+
+    CurrentPhase = (CurrentPhase + 1) % 4;
+    GpioDataRegs.GPADAT.all = (dir[CurrentPhase] << MOTOR_PIN_START);
+
+    if(flag) DELAY_US(2000);  // 步间延时20ms
+}
 
 
 // 正转一步
@@ -75,29 +82,46 @@ void InitMotor(void){
 
 }
 
+void MotorTest(void){
+        //定时器按键扫描
+      int i;
+      for( i=0;i<20000;i++){
+            GpioDataRegs.GPADAT.all = 0xa<<7;
+            DELAY_US(20000);
+            GpioDataRegs.GPADAT.all = 0x3<<7;
+            DELAY_US(20000);
+            GpioDataRegs.GPADAT.all = 0x5<<7;
+            DELAY_US(20000);
+            GpioDataRegs.GPADAT.all = 0xc<<7;
+            DELAY_US(20000);
+      }
+
+      for(i=0;i<20000;i++){
+            GpioDataRegs.GPADAT.all = 0x5<<7;
+            DELAY_US(20000);
+            GpioDataRegs.GPADAT.all = 0x3<<7;
+            DELAY_US(20000);
+            GpioDataRegs.GPADAT.all = 0xa<<7;
+            DELAY_US(20000);
+            GpioDataRegs.GPADAT.all = 0xc<<7;
+            DELAY_US(20000);
+      }
+}
+
 
 void StepMotor(void){
-    int presscount=0;
-    int keynum=key_GetNum();s
-    int longnum=key_GetLongNum();
-    static Uint16 *p1=Forward,*p2=Backward;
-    int i=-1,isturn=1;
-    Uint16 value=0;
-    if(keynum){
-         presscount=0;
-         i=(i+1)%4;
-         GpioDataRegs.GPADAT.all = (p1[i] << MOTOR_PIN_START);
+    //百叶窗
+    //双击-反转 单击-步进  长按-一直
+    Uint16* p = NULL;
+    int keynum=key_GetNum();
 
-     }
+    if(double_press) p = key_GetDoubleNum(Forward,Backward);
+    else p=Forward;
 
-     while(keynum){
-         presscount=1;
-         i=(i+1)%4;
-         GpioDataRegs.GPADAT.all = (p1[i] << MOTOR_PIN_START);
-         DELAY_US(20000);
-         longnum=key_GetLongNum();
-     }
+    if(keynum) StepForward(p,0);
 
-
+    while(key_GetLongNum()){
+        StepForward(p,1);
+    }
 
 }

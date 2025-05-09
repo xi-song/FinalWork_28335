@@ -19,6 +19,7 @@ ORDERED_OBJS += \
 "./DSP2833x_Sci.obj" \
 "./DSP2833x_SysCtrl.obj" \
 "./DSP2833x_usDelay.obj" \
+"./Hardware/SRC/DCmotor.obj" \
 "./Hardware/SRC/DSP2833x_CpuTimers.obj" \
 "./Hardware/SRC/key.obj" \
 "./Hardware/SRC/keyboard.obj" \
@@ -161,8 +162,8 @@ Example_2833xScia_FFDLB.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "DSP2833x_ADC_cal.obj" "DSP2833x_CodeStartBranch.obj" "DSP2833x_DefaultIsr.obj" "DSP2833x_GlobalVariableDefs.obj" "DSP2833x_PieCtrl.obj" "DSP2833x_PieVect.obj" "DSP2833x_Sci.obj" "DSP2833x_SysCtrl.obj" "DSP2833x_usDelay.obj" "Hardware\SRC\DSP2833x_CpuTimers.obj" "Hardware\SRC\key.obj" "Hardware\SRC\keyboard.obj" "Hardware\SRC\led.obj" "Hardware\SRC\scic.obj" "Hardware\SRC\step_motor.obj" "Hardware\SRC\timer.obj" "User\Example_2833xScia_FFDLB.obj" 
-	-$(RM) "DSP2833x_DefaultIsr.d" "DSP2833x_GlobalVariableDefs.d" "DSP2833x_PieCtrl.d" "DSP2833x_PieVect.d" "DSP2833x_Sci.d" "DSP2833x_SysCtrl.d" "Hardware\SRC\DSP2833x_CpuTimers.d" "Hardware\SRC\key.d" "Hardware\SRC\keyboard.d" "Hardware\SRC\led.d" "Hardware\SRC\scic.d" "Hardware\SRC\step_motor.d" "Hardware\SRC\timer.d" "User\Example_2833xScia_FFDLB.d" 
+	-$(RM) "DSP2833x_ADC_cal.obj" "DSP2833x_CodeStartBranch.obj" "DSP2833x_DefaultIsr.obj" "DSP2833x_GlobalVariableDefs.obj" "DSP2833x_PieCtrl.obj" "DSP2833x_PieVect.obj" "DSP2833x_Sci.obj" "DSP2833x_SysCtrl.obj" "DSP2833x_usDelay.obj" "Hardware\SRC\DCmotor.obj" "Hardware\SRC\DSP2833x_CpuTimers.obj" "Hardware\SRC\key.obj" "Hardware\SRC\keyboard.obj" "Hardware\SRC\led.obj" "Hardware\SRC\scic.obj" "Hardware\SRC\step_motor.obj" "Hardware\SRC\timer.obj" "User\Example_2833xScia_FFDLB.obj" 
+	-$(RM) "DSP2833x_DefaultIsr.d" "DSP2833x_GlobalVariableDefs.d" "DSP2833x_PieCtrl.d" "DSP2833x_PieVect.d" "DSP2833x_Sci.d" "DSP2833x_SysCtrl.d" "Hardware\SRC\DCmotor.d" "Hardware\SRC\DSP2833x_CpuTimers.d" "Hardware\SRC\key.d" "Hardware\SRC\keyboard.d" "Hardware\SRC\led.d" "Hardware\SRC\scic.d" "Hardware\SRC\step_motor.d" "Hardware\SRC\timer.d" "User\Example_2833xScia_FFDLB.d" 
 	-$(RM) "DSP2833x_ADC_cal.d" "DSP2833x_CodeStartBranch.d" "DSP2833x_usDelay.d" 
 	-@echo 'Finished clean'
 	-@echo ' '

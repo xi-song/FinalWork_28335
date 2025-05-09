@@ -21,6 +21,13 @@ Hardware/SRC/key.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_Sci.h
 Hardware/SRC/key.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_SysCtrl.h
 Hardware/SRC/key.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_XIntrupt.h
 Hardware/SRC/key.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_Xintf.h
+Hardware/SRC/key.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdio.h
+Hardware/SRC/key.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/_ti_config.h
+Hardware/SRC/key.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/linkage.h
+Hardware/SRC/key.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdarg.h
+Hardware/SRC/key.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_types.h
+Hardware/SRC/key.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/cdefs.h
+Hardware/SRC/key.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/machine/_types.h
 
 ../Hardware/SRC/key.c:
 
@@ -63,4 +70,18 @@ D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_SysCtrl.h:
 D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_XIntrupt.h:
 
 D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_Xintf.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdio.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/_ti_config.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/linkage.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdarg.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_types.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/cdefs.h:
+
+D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/machine/_types.h:
 

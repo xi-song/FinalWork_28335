@@ -88,11 +88,17 @@ void EnableInterrupts()
 //3.定时器中断配置
 	 // Configure CPU-Timer 0 to interrupt every 200 milliseconds:
 	 // 100MHz CPU Freq, 20 millisecond Period (in uSeconds)
+	//定时器0
 	 ConfigCpuTimer(&CpuTimer0, 100, 1000);//1ms一次中断
 	 CpuTimer0Regs.TCR.all = 0x4001;
 	 PieCtrlRegs.PIEIER1.bit.INTx7 = 1;
 	 IER |= M_INT1;
 
+	 //定时器1
+	 ConfigCpuTimer(&CpuTimer1, 100, 1000);//1ms一次中断
+	 IER |= M_INT13;
+
+	 CpuTimer1Regs.TCR.bit.TSS=0;
 
     EINT;
     ERTM;
