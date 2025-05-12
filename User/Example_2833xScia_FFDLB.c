@@ -12,21 +12,16 @@
 #include <stdint.h>
 #include <stdio.h>
 
-//长按的话 切换  短按顺序执行
 
 // Global
 extern volatile Uint32 ButtonPressCount; // 按键计数（0-7）
 extern Uint16 ErrorCount;
 unsigned int Count,Flag;
-Uint16 ReceivedChar =0;
 
 
 
-interrupt void ScicRxFifoIsr(void);
-interrupt void ScicTxFifoIsr(void);
+
 interrupt void XINT1_ISR(void);
-interrupt void cpu_timer0_isr(void);
-interrupt void cpu_timer1_isr(void);
 
 
 void HardwareInit(void){
@@ -36,6 +31,7 @@ void HardwareInit(void){
    keyboard_init();
    InitLEDGPIO();
    InitCpuTimers();
+
 }
 //interrupt void scicTxifoIsr(void);
 void main(void)
@@ -61,93 +57,69 @@ void main(void)
 
     scic_fifo_init();
     scic_loopback_init();
-
+    CpuTimer1Regs.TCR.bit.TSS=1;//关闭定时器1
     /*调试——发送中断 之前是方while（1）里面*/
 //       if(flag){
 //           scic_xmit('A');
 //           flag=0;
 //       }
 
-    //要在while里面设置退出键
-    int i=0;
+
     int keyboard_num=0;
+    int keynum=0;
+    Init_Digital(led_choose,0);
+
 	for(;;){
-	    for(i=0;i<=4;i++){
-	        keyboard_scan_lie(i);
-	        DELAY_US(100);
 	        keyboard_num=key_GetKeyBoardNum();
+	        CpuTimer1Regs.TCR.bit.TSS=1;//关闭定时器1
 	        switch(keyboard_num){
-	        case 5:
-	            //key1
-	            WriteLED(0);
-	            break;
-	        case 2:
-	            //key2
-	            WriteLED(1);
-	            break;
 	        case 3:
-	            //key3
-	            WriteLED(2);
+	            //步进电机
+	            while(1){
+	                keynum=key_GetNum();
+	                StepMotor(keynum);
+	                if(key_GetKeyBoardNum()==3) break;
+	            }
 	            break;
 	        case 4:
-	            //key4
-	            WriteLED(3);
+	            //直流电机
+	            while(1){
+	                control_motor(keyboard_num);
+	                if(key_GetKeyBoardNum()==4) break;
+	            }
+	            break;
+	        case 8:
+	            //空调
+	            mytime[0]=0;
+	            mytime[1]=0;
+	            mytime[2]=0;
+	            Init_Digital(led_choose,1);
+	            while(1){
+	                if(key_GetKeyBoardNum()==4){
+                       CpuTimer1Regs.TCR.bit.TSS=0;//开启定时器1
+                   }
+	                keynum=key_GetNum();
+                    if(keynum){
+                       TimeSelect(mytime,keynum);
+                       CpuTimer1Regs.TCR.bit.TSS=1;
+                   }
+	                if(key_GetKeyBoardNum()==8) break;
+	            }
+	            CpuTimer1Regs.TCR.bit.TSS=1;//关闭定时器1
+	            Init_Digital(led_choose,0);
+	            break;
+	        case 12:
+
 	            break;
 	        default:
 	            break;
 	        }
-	        Setkeybord();
-	    }
 
 	}
 
 }
 
 
-//定时器1中断  用于设置时间
-interrupt void cpu_timer1_isr(void)
-{
-   EALLOW;
-   if(CpuTimer1Regs.TCR.bit.TIF==1){
-       KeyBoard_Tick();
-       CpuTimer1Regs.TCR.bit.TIF==1;
-   }
-   EDIS;
-
-}
-
-
-interrupt void cpu_timer0_isr(void)
-{
-   CpuTimer0.InterruptCount++;
-   Key_Tick();
-
-   PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
-}
-
-
-
-interrupt void ScicRxFifoIsr(void)
-{
-
-//      ReceivedChar = ScicRegs.SCIRXBUF.all;
-//      scic_xmit(ReceivedChar);
-//
-//       ScicRegs.SCIFFRX.bit.RXFFINTCLR = 1;
-//     //  ScicRegs.SCIFFTX.bit.TXFFINTCLR=1;
-//       PieCtrlRegs.PIEACK.all = PIEACK_GROUP8;
-
-}
-
-
-interrupt void ScicTxFifoIsr(void){
-    scic_xmit(ReceivedChar);
-    ScicRegs.SCIFFTX.bit.TXFFINTCLR=1;
-    PieCtrlRegs.PIEACK.all = PIEACK_GROUP8;
-//    PieCtrlRegs.PIEACK.all|=0x100;      // Issue PIE ACK
-    EINT;
-
-}
 
 
 // XINT1中断服务函数

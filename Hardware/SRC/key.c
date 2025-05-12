@@ -3,7 +3,7 @@ int key_num=0;//按键返回值 确定按键
 int long_press=0;
 int double_press=0,double_cnt=0;
 #define LONG_PRESS_TIME  3 //3*20=60ms
-#define DOUBLE_PRESS_TIME  1200
+#define DOUBLE_PRESS_TIME  900
 
 
 void key_init(void){
@@ -56,6 +56,17 @@ Uint16* key_GetDoubleNum(Uint16 dir1[],Uint16 dir2[]){
     return NULL;
 }
 
+int key_GetTimeDoubleNum(void){
+    int tmp;
+    if(double_press){
+        tmp=double_press;
+        double_press=0;
+        return tmp;
+    }
+    return 0;
+}
+
+
 void Key_Tick(void){
     //t 用于计数双击的时间
     static int count,t=0;
@@ -90,7 +101,7 @@ void Key_Tick(void){
             }else t=0;
         }
 
-        if(t>=55){//是55*20 ms的时间
+        if(t>=60){//是55*20 ms的时间
             long_press=cur;
             flag=1;
         }

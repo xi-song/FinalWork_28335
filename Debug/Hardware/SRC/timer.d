@@ -33,6 +33,14 @@ Hardware/SRC/timer.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/in
 Hardware/SRC/timer.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/xlocale/_time.h
 Hardware/SRC/timer.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdio.h
 Hardware/SRC/timer.obj: D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdarg.h
+Hardware/SRC/timer.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/key.h
+Hardware/SRC/timer.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/keyboard.h
+Hardware/SRC/timer.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/DSP2833x_Examples.h
+Hardware/SRC/timer.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_GlobalPrototypes.h
+Hardware/SRC/timer.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_ePwm_defines.h
+Hardware/SRC/timer.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_Dma_defines.h
+Hardware/SRC/timer.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_I2C_defines.h
+Hardware/SRC/timer.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_DefaultISR.h
 
 ../Hardware/SRC/timer.c:
 
@@ -99,4 +107,20 @@ D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/xlocale/_time.h:
 D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdio.h:
 
 D:/CCS/ccs/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdarg.h:
+
+D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/key.h:
+
+D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/keyboard.h:
+
+D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/DSP2833x_Examples.h:
+
+D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_GlobalPrototypes.h:
+
+D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_ePwm_defines.h:
+
+D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_Dma_defines.h:
+
+D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_I2C_defines.h:
+
+D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_DefaultISR.h:
 

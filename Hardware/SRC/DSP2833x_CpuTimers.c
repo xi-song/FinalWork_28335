@@ -55,6 +55,7 @@ void InitCpuTimers(void)
 // DSP-BIOS or another realtime OS.
 //
 // Initialize address pointers to respective timer registers:
+
 	CpuTimer1.RegsAddr = &CpuTimer1Regs;
 	CpuTimer2.RegsAddr = &CpuTimer2Regs;
 	// Initialize timer period to maximum:
@@ -74,7 +75,7 @@ void InitCpuTimers(void)
 	// Reset interrupt counters:
 	CpuTimer1.InterruptCount = 0;
 	CpuTimer2.InterruptCount = 0;
-
+	 SysCtrlRegs.PCLKCR3.bit.CPUTIMER1ENCLK = 1; // CPU Timer 1
 }
 
 //---------------------------------------------------------------------------

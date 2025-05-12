@@ -8,6 +8,8 @@ unsigned int keypress = 0;
 unsigned int keyx, keyy;
 unsigned int key_value;
 unsigned int motor_state = 0; // 0:停止, 1:转动
+unsigned int led_choose[8]={0xFC,0xFC,0xFC,0xFC,0xFC,0xFC,0xFC,0xFC};
+
 
 // 键盘映射
 //0x000 c; 0x100 D;  0x200 E;  0x300 F;  0x400  NXET;
@@ -24,10 +26,10 @@ void Setkeybord(void){
     GpioDataRegs.GPBDAT.bit.GPIO49 = 1;
 }
 int Board_GetState(void){
-    if(KEY1==0) return 5;
-    else if(KEY2==0) return 2;
-    else if(KEY3==0) return 3;
+    if(KEY0==0) return 3;//按下的是0
     else if(KEY4==0) return 4;
+    else if(KEY8==0) return 8;
+    else if(KEY12==0) return 12;
     else return 0;
 }
 int key_GetKeyBoardNum(void){
@@ -59,37 +61,6 @@ void KeyBoard_Tick(void){
 }
 
 
-//明天去测
-void KeyBoard_Tick1(void){
-    static int count=0,i=0;
-    static int pre=0,cur=0;
-    count++;
-    if(count>20){
-        count=0;
-        pre=cur;
-        Setkeybord();
-        for(i=0;i<4;i++){
-            switch(i){
-                case 1:
-                    KEY53=0;
-                    cur=Board_GetState();
-                    if(cur==0 && pre!=0){
-                        keyboard_num=pre;
-                    }
-                case 2:
-                    KEY53=0;
-                    cur=Board_GetState();
-                    if(cur==0 && pre!=0){
-                        keyboard_num=pre;
-                    }
-
-            }
-        }
-
-    }
-
-
-}
 
 
 
@@ -140,7 +111,6 @@ void keyboard_scan_lie(int i){
          }
 
 }
-
 
 
 
@@ -274,8 +244,10 @@ void configtestled(void)//键盘和电机的都有了
 }
 
 void keyboard_init(void){
+    keyboard_scan_lie(0);
     configtestled();
     InitXintf16Gpio();
+
 }
 
 //向数码管写入指定索引的段码
@@ -300,4 +272,80 @@ void WriteLED(unsigned int index)
         }
     }
 }
+
+void WriteLEDs(unsigned int * index)
+{
+    unsigned int i,ii;
+    for(ii=0;ii<8;ii++)
+    {
+        for(i=0;i<8;i++)
+        {
+            if(index[ii]&(0x01<<i))
+                LEDSAB = 1;
+            else
+                LEDSAB = 0;
+
+            LEDSCLK = 0;
+
+            LEDSCLK = 1;
+
+        }
+    }
+}
+
+
+
+void Init_Digital(unsigned int * index,int choice){
+    //全部为0
+    Initled_choose(index,choice);
+    WriteLEDs(index);
+}
+
+void Initled_choose(unsigned int * index,int choice)
+{
+    unsigned int i;
+
+    if(choice==0){
+        for(i=0;i<8;i++){
+            index[i]=0xFC;
+        }
+    }else{
+
+        for(i=1;i<9;i++){
+            if(i%3){
+                index[i-1]=0xFC;
+            }else{
+                index[i-1]=0x2;
+            }
+        }
+    }
+
+}
+
+void SelectDigitalLed(unsigned int * index,unsigned int pos,unsigned int num)
+{
+    unsigned int numm;
+    unsigned int led[10]={0xFC,0x60,0xDA,0xF2,0x66,0xB6,0xBE,0xE0,0xFE,0xF6};//1,2,3,4,5,6,7,8
+    index[8-pos]=led[num];
+}
+
+void InsertArray(unsigned int * index,unsigned int num)
+{
+    unsigned int led[8]={0x60,0xDA,0xF2,0x66,0xB6,0xBE,0xE0,0xFE};//1,2,3,4,5,6,7,8
+
+    index[8-num]=led[num-1];
+
+}
+
+void InsertArray1(unsigned int * index,unsigned int num)
+{
+    unsigned int led[8]={0x60,0xDA,0xF2,0x66,0xB6,0xBE,0xE0,0xFE};//1,2,3,4,5,6,7,8
+
+    for(num=0;num<7;num++)
+    index[8-num]=led[num-1];
+
+}
+
+
+
 

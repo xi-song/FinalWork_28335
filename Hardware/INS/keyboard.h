@@ -4,10 +4,12 @@
 #include "DSP2833x_Xintf.h"
 #include "DSP2833x_Examples.h"
 #include <stdio.h>
-#define KEY1 GpioDataRegs.GPADAT.bit.GPIO3
-#define KEY2 GpioDataRegs.GPADAT.bit.GPIO2
-#define KEY3 GpioDataRegs.GPADAT.bit.GPIO1
-#define KEY4 GpioDataRegs.GPADAT.bit.GPIO0
+extern unsigned int led_choose[8];
+extern int keyboard_num;
+#define KEY0 GpioDataRegs.GPADAT.bit.GPIO3
+#define KEY4 GpioDataRegs.GPADAT.bit.GPIO2
+#define KEY8 GpioDataRegs.GPADAT.bit.GPIO1
+#define KEY12 GpioDataRegs.GPADAT.bit.GPIO0
 
 
 
@@ -21,8 +23,8 @@
 #define LEDSCLK   GpioDataRegs.GPADAT.bit.GPIO12
 
 
-extern int keyboard_num;
-void KeyBoard_Tick1(void);
+void Initled_choose(unsigned int * index,int choice);
+void Init_Digital(unsigned int * index,int choice);
 void keyboard_scan_lie(int i);
 int key_GetKeyBoardNum(void);
 void KeyBoard_Tick(void);
@@ -32,8 +34,10 @@ void Setkeybord(void);
 void InitXintf16Gpio(void);
 void keyboard_init(void);
 void WriteLED(unsigned int index);
+void WriteLEDs(unsigned int * index);
 void control_motor(unsigned int state);
 void configtestled(void);
-
-
+void InsertArray1(unsigned int * index,unsigned int num);
+void InsertArray(unsigned int * index,unsigned int num);
+void SelectDigitalLed(unsigned int * index,unsigned int pos,unsigned int num);
 #endif

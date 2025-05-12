@@ -5,7 +5,7 @@ Hardware/SRC/scic.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/scic.
 Hardware/SRC/scic.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/DSP2833x_Device.h
 Hardware/SRC/scic.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_Adc.h
 Hardware/SRC/scic.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_DevEmu.h
-Hardware/SRC/scic.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_CpuTimers.h
+Hardware/SRC/scic.obj: D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/DSP2833x_CpuTimers.h
 Hardware/SRC/scic.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_ECan.h
 Hardware/SRC/scic.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_ECap.h
 Hardware/SRC/scic.obj: D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_DMA.h
@@ -32,7 +32,7 @@ D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_Adc.h:
 
 D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_DevEmu.h:
 
-D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_CpuTimers.h:
+D:/CCS/Project/Example_2833xScia_FFDLB/Hardware/INS/DSP2833x_CpuTimers.h:
 
 D:/CCS/Project/Example_2833xScia_FFDLB/DSP2833x_ECan.h:
 

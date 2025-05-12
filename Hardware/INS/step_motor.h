@@ -7,7 +7,7 @@
 extern int flag_key;
 extern Uint16 Forward[];
 extern Uint16 Backward[]; // 反转序列
-
+extern Uint16* p ;
 // 函数声明
 void InitMotorGPIO(void);
 void InitLEDGPIO(void);
@@ -18,5 +18,6 @@ void InitMotor(void);
 void MotorTest(void);
 void StepForward(Uint16 *dir,int flag);
 //void forward(int flag);
-void StepMotor(void);
+void StepMotor(int a);
+
 #endif

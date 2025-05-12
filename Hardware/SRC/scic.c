@@ -1,6 +1,36 @@
 #include "scic.h"
 
 Uint16 ErrorCount;
+Uint16 ReceivedChar =0;
+
+
+interrupt void ScicRxFifoIsr(void)
+{
+
+//      ReceivedChar = ScicRegs.SCIRXBUF.all;
+//      scic_xmit(ReceivedChar);
+//
+//       ScicRegs.SCIFFRX.bit.RXFFINTCLR = 1;
+//     //  ScicRegs.SCIFFTX.bit.TXFFINTCLR=1;
+//       PieCtrlRegs.PIEACK.all = PIEACK_GROUP8;
+
+}
+
+
+interrupt void ScicTxFifoIsr(void){
+    scic_xmit(ReceivedChar);
+    ScicRegs.SCIFFTX.bit.TXFFINTCLR=1;
+    PieCtrlRegs.PIEACK.all = PIEACK_GROUP8;
+//    PieCtrlRegs.PIEACK.all|=0x100;      // Issue PIE ACK
+    EINT;
+
+}
+
+
+
+
+
+
 void error(int ErrorFlag)
 {
       Uint16 Error;

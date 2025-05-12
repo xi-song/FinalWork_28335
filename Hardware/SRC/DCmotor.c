@@ -20,11 +20,12 @@ void DC_Moter(void){
     }
 }
 
+
 void control_motor(unsigned int state)
 {
     unsigned long long int  m=0;
 
-    if(state == 1) // 启动电机
+    if(state !=0 ) // 启动电机
     {
         for(m = 0; m < 4; m++)
         {

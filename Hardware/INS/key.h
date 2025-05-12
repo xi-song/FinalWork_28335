@@ -5,8 +5,7 @@
 
 extern int long_press;
 extern int double_press;
-
-
+int key_GetTimeDoubleNum(void);
 void key_init(void);
 int Key_GetState(void);
 void Key_Tick(void);

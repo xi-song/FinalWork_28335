@@ -6,7 +6,7 @@
 //const Uint16 Backward[] = {0x0A, 0x0C, 0x05, 0x03}; // 反转序列
 //const Uint16 ward[] = {0x0A, 0x03, 0x05, 0x0C, 0x05,0x03,0x0A,0x0C}; // 反转序列
 static int CurrentPhase =-1;
-
+Uint16* p = NULL;
 Uint16 Forward[] = {0x0A, 0x03, 0x05, 0x0C}; // 正转序列
 Uint16 Backward[] = {0x05,0x03,0x0A,0x0C}; // 反转序列
 
@@ -109,19 +109,23 @@ void MotorTest(void){
 }
 
 
-void StepMotor(void){
+void StepMotor(int a){
     //百叶窗
     //双击-反转 单击-步进  长按-一直
-    Uint16* p = NULL;
-    int keynum=key_GetNum();
+//    int keynum=key_GetNum();
 
-    if(double_press) p = key_GetDoubleNum(Forward,Backward);
-    else p=Forward;
+    if(double_press){
+        p = key_GetDoubleNum(Forward,Backward);
+    }
 
-    if(keynum) StepForward(p,0);
+
+    if(a)
+        StepForward(p,0);
 
     while(key_GetLongNum()){
         StepForward(p,1);
     }
 
 }
+
+
